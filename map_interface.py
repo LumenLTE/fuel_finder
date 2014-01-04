@@ -1,7 +1,7 @@
 from PyQt4.QtWebKit import QWebView
 
 class Map(QWebView):
-    def __init__(self):
+    def __init__(self, station1_list, station2_list, station3_list, station4_list, station5_list, station6_list, station7_list, station8_list, station9_list):
         super().__init__()
         self.station1_unleaded = 100
         self.station1_diesel = 200
@@ -87,7 +87,7 @@ class Map(QWebView):
                                     });
                               
                                     var info1 = new google.maps.InfoWindow({
-                                                    content: "<h3>Marker1</h3> <p>Unleaded: """ + str(self.station1_unleaded) + """ </p> <p>Diesel: """ + str(self.station1_diesel) +  """ </p> <p>other: """ + str(self.station1_other) + """ </p>"
+                                                    content: "<h3>Marker1</h3> <p>Unleaded: """ + str(station1_list[0]) + """ </p> <p>Diesel: """ + str(station1_list[1]) +  """ </p> <p>other: """ + str(station1_list[2]) + """ </p>"
                                     });
                               
                                     var station2Latlng = new google.maps.LatLng(52.21946247877899, 0.11142432689666748);
@@ -98,7 +98,7 @@ class Map(QWebView):
                                     });
                               
                                     var info2 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker2</h3> <p>Unleaded: {3} </p> <p>Diesel: {4} </p> <p>Other: {5} </p>"
+                                            content: "<h3>Marker2</h3> <p>Unleaded: """ + str(station2_list[0]) + """ </p> <p>Diesel: """ + str(station2_list[1]) + """ </p> <p>Other: """ + str(station2_list[2]) + """</p>"
                                     });
 
                               
@@ -110,7 +110,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info3 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker3</h3> <p>Unleaded: {6} </p> <p>Diesel: {7} </p> <p>Other: {8} </p>"
+                                            content: "<h3>Marker3</h3> <p>Unleaded: """ + str(station3_list[0]) + """ </p> <p>Diesel: """ + str(station3_list[1]) + """ </p> <p>Other: """ + str(station3_list[2]) + """ </p>"
                                     });
                               
                                     var station4Latlng = new google.maps.LatLng(52.20019806415637, 0.15837907791137695);
@@ -121,7 +121,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info4 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker4</h3> <p>Unleaded: {9} </p> <p>Diesel: {10} </p> <p>Other: {11} </p>"
+                                            content: "<h3>Marker4</h3> <p>Unleaded: """ + str(station4_list[0]) + """ </p> <p>Diesel: """ + str(station4_list[1]) + """ </p> <p>Other: """ + str(station4_list[2]) + """ </p>"
                                     });
                                                                                                        
                                     var station5Latlng = new google.maps.LatLng(52.21112726046464, 0.18126368522644043);
@@ -132,7 +132,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info5 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker5</h3> <p>Unleaded: {12} </p> <p>Diesel: {13} </p> <p>Other: {14} </p>"
+                                            content: "<h3>Marker5</h3> <p>Unleaded: """ + str(station5_list[0]) + """ </p> <p>Diesel: """ + str(station5_list[1]) + """ </p> <p>Other: """ + str(station5_list[2]) + """ </p>"
                                     });
                               
                                     var station6Latlng = new google.maps.LatLng(52.17321450649969, 0.11265009641647339);
@@ -143,7 +143,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info6 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker6</h3> <p>Unleaded: {15} </p> <p>Diesel: {16} </p> <p>Other: {17} </p>"
+                                            content: "<h3>Marker6</h3> <p>Unleaded: """ + str(station6_list[0]) + """ </p> <p>Diesel: """ + str(station6_list[1]) + """ </p> <p>Other: """ + str(station6_list[2]) + """ </p>"
                                     });
                               
                                     var station7Latlng = new google.maps.LatLng(52.238283272894094, 0.15647470951080322);
@@ -155,7 +155,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info7 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker7</h3> <p>Unleaded: {18} </p> <p>Diesel: {19} </p> <p>Other: {20} </p>"
+                                            content: "<h3>Marker7</h3> <p>Unleaded: """ + str(station7_list[0]) + """ </p> <p>Diesel: """ + str(station7_list[1]) + """ </p> <p>Other: """ + str(station7_list[2]) + """ </p>"
                                     });
                               
                                     var station8Latlng = new google.maps.LatLng(52.25520301641985, 0.019676685333251953);
@@ -167,7 +167,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info8 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker8</h3> <p>Unleaded: {21} </p> <p>Diesel: {22} </p> <p>Other: {23} </p>"
+                                            content: "<h3>Marker8</h3> <p>Unleaded: """ + str(station8_list[0]) + """ </p> <p>Diesel: """ + str(station8_list[1]) + """ </p> <p>Other: """ + str(station8_list[2]) + """ </p>"
                                     });
                               
                                     var station9Latlng = new google.maps.LatLng(52.18553665582424, 0.1605302095413208);
@@ -179,7 +179,7 @@ class Map(QWebView):
                                     });
                                     
                                     var info9 = new google.maps.InfoWindow({
-                                            content: "<h3>Marker9</h3> <p>Unleaded: {24} </p> <p>Diesel: {25} </p> <p>Other: {26} </p>"
+                                            content: "<h3>Marker9</h3> <p>Unleaded: """ + str(station9_list[0]) + """ </p> <p>Diesel: """ + str(station9_list[1]) + """ </p> <p>Other: """ + str(station9_list[2]) + """ </p>"
                                     });
 
 

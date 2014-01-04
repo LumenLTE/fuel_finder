@@ -37,6 +37,8 @@ class MainWindow(QMainWindow):
 
         self.select_login = QPushButton("\n\n LOGIN \n\n")
         self.select_register = QPushButton("\n\n REGISTER \n\n")
+        #THIS IS TO SKIP THE LOGIN SCREEN BEFORE ITS IMPLEMENTED
+        self.debug_skip = QPushButton("SKIP - DEBUG")
 
 
         self.initial_widget = QWidget()
@@ -46,6 +48,7 @@ class MainWindow(QMainWindow):
         self.initial_layout.addWidget(self.blank)
         self.initial_layout.addWidget(self.select_register)
         self.initial_layout.addWidget(self.blank)
+        self.initial_layout.addWidget(self.debug_skip)
 
 
         self.initial_widget.setLayout(self.initial_layout)
@@ -55,12 +58,15 @@ class MainWindow(QMainWindow):
         self.select_login.clicked.connect(self.set_login_layout)
         self.select_register.clicked.connect(self.set_register_layout)
 
+
         self.setFixedSize(600, 480)
 
         self.status = "initial screen"
 
     def set_login_layout(self):
         self.submit_button = QPushButton("Login")
+
+        
 
         self.username_label = QLabel("Username")
         self.username_line = QLineEdit()
@@ -86,6 +92,7 @@ class MainWindow(QMainWindow):
         self.login_layout.addWidget(self.submit_button, 4, 1)
         self.login_layout.addWidget(self.blank, 4, 2)
         self.login_layout.addWidget(self.blank, 5, 0)
+        
 
         self.login_widget = QWidget()
         self.login_widget.setLayout(self.login_layout)
