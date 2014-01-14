@@ -350,15 +350,16 @@ class LoginBox(QDialog):
 class PriceHandler(QDialog):
     def __init__(self, available_stations):
         super().__init__()
+        self.stations = available_stations
         self.combo_box = QComboBox()
         label1 = QLabel('I am at...')
         label2 = QLabel('Unleaded Price')
         label3 = QLabel('Diesel Price')
         label4 = QLabel('Other Price \n(if applicable)')
         submit_button = QPushButton("Submit")
-        line1 = QLineEdit()
-        line2 = QLineEdit()
-        line3 = QLineEdit()
+        self.line1 = QLineEdit()
+        self.line2 = QLineEdit()
+        self.line3 = QLineEdit()
         
         self.combo_box.insertItems(0, available_stations)
         
@@ -367,24 +368,28 @@ class PriceHandler(QDialog):
         layout.addWidget(self.combo_box, 1, 1)
         
         layout.addWidget(label2, 2, 0)
-        layout.addWidget(line1,2, 1)
+        layout.addWidget(self.line1,2, 1)
 
         layout.addWidget(label3, 3, 0)
-        layout.addWidget(line2, 3, 1)
+        layout.addWidget(self.line2, 3, 1)
 
         layout.addWidget(label4, 4, 0)
-        layout.addWidget(line3, 4, 1)
+        layout.addWidget(self.line3, 4, 1)
 
         layout.addWidget(submit_button, 5, 2)
 
-        submit_button.clicked.connect(self.return_current_index)
+        self.station_price = submit_button.clicked.connect(self.return_current_prices)
         
         
         
         self.setLayout(layout)
-    def return_current_index(self):
+    def return_current_prices(self):
         index = self.combo_box.currentIndex()
         print(index)
+        prices = {'stationID': index + 1, 'price_u': self.line1.text(), 'price_d': self.line2.text(), 'price_o': self.line3.text()}
+        print(prices)
+        return prices
+        
         
                                 
 

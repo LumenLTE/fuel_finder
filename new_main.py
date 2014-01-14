@@ -74,7 +74,9 @@ if __name__ == "__main__":
     #window.select_login.clicked.connect(load_map_interface)
     #window.debug_skip.clicked.connect(load_map_interface)
     #window.select_login.clicked.connect(test_loading_bar)
-    load_map_interface(current_user)
+    station_list, available_stations = generate_station_lists()
+    print(available_stations)
+    #load_map_interface(current_user)
     window.debug_skip.clicked.connect(get_user_price)
 
     window.raise_()
