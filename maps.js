@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Custom controls</title>
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script>
 var map;
 var cambridge = new google.maps.LatLng(52.2204385435938, 0.0995635986328125);
 var coords = ''
@@ -23,7 +8,7 @@ var coords = ''
  * the control DIV as an argument.
  * @constructor
  */
-/*function HomeControl(controlDiv, map) {
+function HomeControl(controlDiv, map) {
 
   // Set CSS styles for the DIV containing the control
   // Setting padding to 5 px will offset the control
@@ -51,18 +36,33 @@ var coords = ''
 
   // Setup the click event listeners: simply set the map to
   // Chicago
-  //google.maps.event.addDomListener(controlUI, 'click', function() {
-    //map.setCenter(cambridge)
-  //});
+  google.maps.event.addDomListener(controlUI, 'click', function() {
+    map.setCenter(cambridge)
+  });
 
-} */
+}
 
 function initialize() {
+
+	//var price1_u = "1"
+	
 	var mapDiv = document.getElementById('map-canvas');
 	var mapOptions = {
 		zoom: 12,
 		center: cambridge
 	};
+	var image = {
+        url: 'images/google_blue_small.png',
+        //image is 30x51
+        size: new google.maps.Size(30, 51),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(0, 51)
+    };
+	
+	var shape = {
+      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      type: 'poly'
+    };
   
   
 	var map = new google.maps.Map(mapDiv, mapOptions);
@@ -74,11 +74,13 @@ function initialize() {
 			map: map,
 			animation: google.maps.Animation.DROP,
 			title: 'Elizabeth Way BP',
+			//icon: image,
+			//shape: shape
 		
 	});
   
 	var info1 = new google.maps.InfoWindow({
-			content: "<h3>Marker1</h3> <p>Unleaded: {0}</p> <p>Diesel: {1}</p> <p>other: {2}</p>"
+			content: "<h3>Marker1</h3> <p>Unleaded:" + price1_u + "</p> <p>Diesel: {1}</p> <p>other: {2}</p>"
 	});
   
 	var station2Latlng = new google.maps.LatLng(52.21946247877899, 0.11142432689666748);
@@ -177,8 +179,8 @@ function initialize() {
 	// Create the DIV to hold the control and
 	// call the HomeControl() constructor passing
 	// in this DIV.
-	//var homeControlDiv = document.createElement('div');
-	//var homeControl = new HomeControl(homeControlDiv, map);
+	var homeControlDiv = document.createElement('div');
+	var homeControl = new HomeControl(homeControlDiv, map);
   
 	marker1.setAnimation(google.maps.Animation.DROP)
 	marker1.setAnimation(google.maps.Animation.BOUNCE)
@@ -227,17 +229,8 @@ function initialize() {
   
 
 
-	//homeControlDiv.index = 1;
-	//map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+	homeControlDiv.index = 1;
+	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-    </script>
-	</head>
-	<body>
-    <div id="map-canvas"></div>
-  </body>
-</html>

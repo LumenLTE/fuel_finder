@@ -26,6 +26,7 @@ class MainWindow(QMainWindow):
 
         self.user_info = {}
 
+
         
 
 
@@ -296,7 +297,7 @@ class DetailsPopup(QDialog):
         self.exec_()
 
 
-#handles loading of webpage maps
+#old map loading
 class MapHTML(QWebView):
 
     def __init__(self, mode):
@@ -338,7 +339,53 @@ class LoadingBar(QProgressBar):
             self.setValue(progress)
 
 
+class LoginBox(QDialog):
+    def __init__(self):
+        super().__init__()
+        user_label = QLabel("Username")
+        pass_label = QLabel("Password")
+        user_line = QLineEdit()
+        pass_line = QLineEdit()
 
+class PriceHandler(QDialog):
+    def __init__(self, available_stations):
+        super().__init__()
+        self.combo_box = QComboBox()
+        label1 = QLabel('I am at...')
+        label2 = QLabel('Unleaded Price')
+        label3 = QLabel('Diesel Price')
+        label4 = QLabel('Other Price \n(if applicable)')
+        submit_button = QPushButton("Submit")
+        line1 = QLineEdit()
+        line2 = QLineEdit()
+        line3 = QLineEdit()
+        
+        self.combo_box.insertItems(0, available_stations)
+        
+        layout = QGridLayout()
+        layout.addWidget(label1, 0, 1)
+        layout.addWidget(self.combo_box, 1, 1)
+        
+        layout.addWidget(label2, 2, 0)
+        layout.addWidget(line1,2, 1)
+
+        layout.addWidget(label3, 3, 0)
+        layout.addWidget(line2, 3, 1)
+
+        layout.addWidget(label4, 4, 0)
+        layout.addWidget(line3, 4, 1)
+
+        layout.addWidget(submit_button, 5, 2)
+
+        submit_button.clicked.connect(self.return_current_index)
+        
+        
+        
+        self.setLayout(layout)
+    def return_current_index(self):
+        index = self.combo_box.currentIndex()
+        print(index)
+        
                                 
 
     
